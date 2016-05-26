@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Calculator</title>
+
+	<link rel="stylesheet" href="bootstrap.css">
+	<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+	<div class="container">
+		<div class="calculator">
+				<input type="text" id="getInputValue" placeholder="Enter a value">
+				<span id="displayResult">20</span>
+
+				<div class="number-block">
+					<ul class="number-list">
+						<li onClick="goInitialState()">C</li>
+						<li onClick="addToDisplay('1')">1</li>
+						<li onClick="addToDisplay('2')">2</li>
+						<li onClick="addToDisplay('3')">3</li>
+						<li onClick="addToDisplay('4')">4</li>
+						<li onClick="addToDisplay('5')">5</li>
+						<li onClick="addToDisplay('6')">6</li>
+						<li onClick="addToDisplay('7')">7</li>
+						<li onClick="addToDisplay('8')">8</li>
+						<li onClick="addToDisplay('9')">9</li>
+						<li onClick="addToDisplay('0')">0</li>
+						<li onClick="addToDisplay('.')">.</li>
+						<li onClick="addToDisplay('*')">*</li>
+						<li onClick="addToDisplay('+')">+</li>
+						<li onClick="addToDisplay('-')">-</li>
+						<li onClick="addToDisplay('/')">/</li>
+						<li onClick="addToDisplay('%')">%</li>
+						<li onClick="addToDisplay('^')">^</li>
+						<li onClick="getResult()">=</li>
+					</ul>
+				</div> <!-- End  -->
+		</div>	<!-- End -->
+	
+
+	</div> <!-- End Container -->
+
+	<script>
+	   /* Focused */
+		document.getElementById("getInputValue").focus();
+
+		var getValue = document.getElementById("getInputValue").value;
+
+		function getResult () {
+			
+			document.getElementById("displayResult").innerHTML = eval(getValue);
+		}
+
+		function addToDisplay (number) {
+			var inputValue = document.getElementById('getInputValue').value = number; 
+			if (inputValue.length > 0 ) {
+					var a = inputValue + number;
+			}
+		}
+
+		function goInitialState () {
+			document.getElementById("getInputValue").value = '';
+		}
+
+		document.getElementById("id_of_textbox")
+    .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode == 13) {
+        console.log('Hi');
+    }
+}
+		
+	</script>
+</body>
+</html>
