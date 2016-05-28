@@ -11,15 +11,18 @@
 <body>
 	<div class="container">
 		<div class="calculator">
+			<div class="calculator-block">
 				<input type="text" id="getInputValue" placeholder="Enter a value">
-				<span id="displayResult">20</span>
-
-				<div class="number-block">
+				<span id="displayResult">0</span>
+					<div class="number-block">
 					<ul class="number-list">
 						<li onClick="goInitialState()">C</li>
-						<li onClick="addToDisplay('1')">1</li>
-						<li onClick="addToDisplay('2')">2</li>
-						<li onClick="addToDisplay('3')">3</li>
+						<li onClick="goInitialState()">Del</li>
+						<li onClick="addToDisplay('%')">%</li>
+						<li onClick="addToDisplay('/')">/</li>
+						<li onClick="addToDisplay('-')">-</li>
+						<li onClick="addToDisplay('+')">+</li>
+						<li onClick="addToDisplay('*')">*</li>
 						<li onClick="addToDisplay('4')">4</li>
 						<li onClick="addToDisplay('5')">5</li>
 						<li onClick="addToDisplay('6')">6</li>
@@ -28,49 +31,48 @@
 						<li onClick="addToDisplay('9')">9</li>
 						<li onClick="addToDisplay('0')">0</li>
 						<li onClick="addToDisplay('.')">.</li>
-						<li onClick="addToDisplay('*')">*</li>
-						<li onClick="addToDisplay('+')">+</li>
-						<li onClick="addToDisplay('-')">-</li>
-						<li onClick="addToDisplay('/')">/</li>
-						<li onClick="addToDisplay('%')">%</li>
+						<li onClick="addToDisplay('3')">3</li>
+						<li onClick="addToDisplay('2')">2</li>
+						<li onClick="addToDisplay('1')">1</li>
 						<li onClick="addToDisplay('^')">^</li>
-						<li onClick="getResult()">=</li>
+						<li onClick="getResult()" class="bg-black">=</li>
 					</ul>
-				</div> <!-- End  -->
+				</div> <!-- End  number Block -->
+				</div> <!-- End Calculator Block -->
 		</div>	<!-- End -->
-	
-
 	</div> <!-- End Container -->
 
 	<script>
 	   /* Focused */
 		document.getElementById("getInputValue").focus();
-
 		var getValue = document.getElementById("getInputValue").value;
 
 		function getResult () {
-			
+			var getValue = document.getElementById("getInputValue").value;
 			document.getElementById("displayResult").innerHTML = eval(getValue);
+			console.log(getValue);
 		}
 
 		function addToDisplay (number) {
 			var inputValue = document.getElementById('getInputValue').value = number; 
-			if (inputValue.length > 0 ) {
-					var a = inputValue + number;
-			}
+			getValue.value += number;
 		}
 
 		function goInitialState () {
 			document.getElementById("getInputValue").value = '';
 		}
-
-		document.getElementById("id_of_textbox")
-    .addEventListener("keyup", function(event) {
+   
+    /* Enter Key */
+		document.getElementById("getInputValue").addEventListener("keyup", function(event) {
     event.preventDefault();
-    if (event.keyCode == 13) {
-        console.log('Hi');
-    }
-}
+		    if (event.keyCode == 13) {
+		    		getResult();
+		    }
+		});
+
+		/* Log */
+
+
 		
 	</script>
 </body>
