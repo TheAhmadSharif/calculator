@@ -45,7 +45,6 @@ input {
 
 input:focus {
 	border-color: #333;
-	box-shadow: none !important;
 	outline: 0;
 }	
 
@@ -55,18 +54,22 @@ input:focus {
 #displayResult {
  		margin-top: 10px;
     margin-bottom: 10px;
-    border: 1px solid #333;
+    border: 1px solid #666;
     padding: 5px;
     float: left;
     clear: both;
 }
 #getInputValue {
-  border-color: #333;
+  border-color: #666;
   color: transparent;
   text-shadow: 0 0 0 #333;
   float: left;
 }
-
+#getInputValue:focus {
+	background-color: #FFF;
+  border: 1px solid #666;
+  box-shadow: -1px 1px 1px 0px rgba(0, 0, 0, 0.4);
+}
 .number-list > li {
 		display: inline-block;
 	  margin-right: 0px;
@@ -103,4 +106,18 @@ input:focus {
 .log-block {
 	margin-top: 30px;
 	margin-bottom: 30px;
+}
+.btn-clear {
+	border-radius: 2px;
+	background: #333;
+	color: #FFF;
+	margin-bottom: 20px;
+}
+.btn-clear:hover,.btn-clear:active,.btn-clear:focus {
+	background: #000;
+	color: #FFF;
+}
+
+#clearButton {
+	display: none;
 }

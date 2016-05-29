@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Calculator</title>
 	
-	<link rel="shortcut icon" href="pi.png">
+	<link rel="shortcut icon" href="1.png">
 	<link rel="stylesheet" href="bootstrap.css">
 	<link rel="stylesheet" href="style.css">
 
@@ -45,6 +45,7 @@
 		</div>	<!-- End Calculator-->
 
 		<div class="log-block">
+			<button class="btn btn-clear pull-right" id="clearButton" onclick="clearLog()">Clear Log</button>
 			<table class="table" id="logTable">
 				<tbody>
 					
@@ -54,31 +55,37 @@
 	</div> <!-- End Container -->
 
 	<script>
+
+		/* Clear Log */
+		function clearLog () {
+			var table = document.getElementById('logTable');
+			table.innerHTML = '';
+			document.getElementById("clearButton").style.display = "none";
+		} 
+
+
 	   /* Focused */
 		document.getElementById("getInputValue").focus();
-		
-
 		function getUserInput () {
 			var inputValue = document.getElementById("getInputValue").value;
 			return inputValue;
 
 		}
-
-		function getResult () {
-			var result = eval(getUserInput());
-			document.getElementById("displayResult").innerHTML = result;
-			getLog();
-
-			return result;
-		}
-
 		function addToDisplay (number) {
 				var getUserInfo = getUserInput() + number;
 			  document.getElementById('getInputValue').value = getUserInfo; 
-			  console.log(getUserInfo);
 			  return getUserInfo;
 		}
+		function getResult () {
+			var result = eval(getUserInput());
 
+			if (result) {
+				document.getElementById("displayResult").innerHTML = result;
+				getLog();
+				return result;
+			}
+			
+		}
 		function goInitialState () {
 			document.getElementById("getInputValue").value = '';
 		}
@@ -86,26 +93,36 @@
     /* Enter Key */
 		document.getElementById("getInputValue").addEventListener("keyup", function(event) {
     event.preventDefault();
-		    if (event.keyCode == 13) {
+    		if (event.keyCode == 13) {
 		    		getResult();
 		    }
+		    
 		});
-
 		/* Log */
-
 		function getLog () {
 			var logTable = document.getElementById('logTable');
 			var row = logTable.insertRow(0);
-
 			var td1 = row.insertCell(0);
 			var td2 = row.insertCell(1);
 			var td3 = row.insertCell(2);
-
-			td1.innerHTML = addToDisplay();
+			var getCalculatedValue = document.getElementById('getInputValue').value;
+			td1.innerHTML = getCalculatedValue;
 			td2.innerHTML = '=';
-			td3.innerHTML = getResult();
+			td3.innerHTML = eval(getCalculatedValue);
+
+			document.getElementById("clearButton").style.display = "block";
+
+
 		}
 
+
+		/* Esc Key Press */
+		document.addEventListener("keydown", function(event) {
+			if (event.keyCode == 27) {
+				goInitialState();
+			}
+		  
+		});
 		
 	</script>
 </body>
