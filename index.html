@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Calculator</title>
-
+	
+	<link rel="shortcut icon" href="pi.png">
 	<link rel="stylesheet" href="bootstrap.css">
 	<link rel="stylesheet" href="style.css">
 
@@ -12,50 +13,70 @@
 	<div class="container">
 		<div class="calculator">
 			<div class="calculator-block">
-				<input type="text" id="getInputValue" placeholder="Enter a value">
-				<span id="displayResult">0</span>
+				<input type="text" id="getInputValue" placeholder="0">
+				<span id="displayResult">Result</span>
 					<div class="number-block">
 					<ul class="number-list">
-						<li onClick="goInitialState()">C</li>
-						<li onClick="goInitialState()">Del</li>
+						<li onClick="goInitialState()">CLR</li>
+						<li onClick="goInitialState()">DEL</li>
 						<li onClick="addToDisplay('%')">%</li>
 						<li onClick="addToDisplay('/')">/</li>
-						<li onClick="addToDisplay('-')">-</li>
-						<li onClick="addToDisplay('+')">+</li>
-						<li onClick="addToDisplay('*')">*</li>
-						<li onClick="addToDisplay('4')">4</li>
-						<li onClick="addToDisplay('5')">5</li>
-						<li onClick="addToDisplay('6')">6</li>
-						<li onClick="addToDisplay('7')">7</li>
-						<li onClick="addToDisplay('8')">8</li>
+					
 						<li onClick="addToDisplay('9')">9</li>
-						<li onClick="addToDisplay('0')">0</li>
-						<li onClick="addToDisplay('.')">.</li>
+						<li onClick="addToDisplay('8')">8</li>
+						<li onClick="addToDisplay('7')">7</li>
+						<li onClick="addToDisplay('*')">*</li>
+						
+						<li onClick="addToDisplay('6')">6</li>
+						<li onClick="addToDisplay('5')">5</li>
+						<li onClick="addToDisplay('4')">4</li>
+							<li onClick="addToDisplay('-')">-</li>
 						<li onClick="addToDisplay('3')">3</li>
 						<li onClick="addToDisplay('2')">2</li>
 						<li onClick="addToDisplay('1')">1</li>
-						<li onClick="addToDisplay('^')">^</li>
+						<li onClick="addToDisplay('+')">+</li>
+						<li onClick="addToDisplay('.')">.</li>
+						<li onClick="addToDisplay('0')">0</li>
+						<li onClick="addToDisplay('00')">00</li>
 						<li onClick="getResult()" class="bg-black">=</li>
 					</ul>
 				</div> <!-- End  number Block -->
-				</div> <!-- End Calculator Block -->
-		</div>	<!-- End -->
+			</div> <!-- End Calculator Block -->
+		</div>	<!-- End Calculator-->
+
+		<div class="log-block">
+			<table class="table" id="logTable">
+				<tbody>
+					
+				</tbody>
+			</table>
+		</div> <!-- End Log Block -->
 	</div> <!-- End Container -->
 
 	<script>
 	   /* Focused */
 		document.getElementById("getInputValue").focus();
-		var getValue = document.getElementById("getInputValue").value;
+		
+
+		function getUserInput () {
+			var inputValue = document.getElementById("getInputValue").value;
+			return inputValue;
+
+		}
 
 		function getResult () {
-			var getValue = document.getElementById("getInputValue").value;
-			document.getElementById("displayResult").innerHTML = eval(getValue);
-			console.log(getValue);
+			var result = eval(getUserInput());
+			document.getElementById("displayResult").innerHTML = result;
+			getLog();
+
+			return result;
 		}
 
 		function addToDisplay (number) {
-			var inputValue = document.getElementById('getInputValue').value = number; 
-			getValue.value += number;
+				var getUserInfo = getUserInput() + number;
+			  document.getElementById('getInputValue').value = getUserInfo; 
+			  console.log(getUserInfo);
+			  return getUserInfo;
 		}
 
 		function goInitialState () {
@@ -72,6 +93,18 @@
 
 		/* Log */
 
+		function getLog () {
+			var logTable = document.getElementById('logTable');
+			var row = logTable.insertRow(0);
+
+			var td1 = row.insertCell(0);
+			var td2 = row.insertCell(1);
+			var td3 = row.insertCell(2);
+
+			td1.innerHTML = addToDisplay();
+			td2.innerHTML = '=';
+			td3.innerHTML = getResult();
+		}
 
 		
 	</script>
