@@ -1,6 +1,6 @@
 .container {
 			width: 720px;
-			margin-top: 30px;
+			margin: 30px auto;
 		}
 
 /*  Placeholder */
@@ -102,6 +102,19 @@ input:focus {
 		border-color: #333 !important;
 	}
 }
+.number-list {
+	.bg-gray1 {
+		background-color: rgba(0,0,0,.4) !important;
+		border: 1px solid rgba(0,0,0,.1) !important;
+		color: #FFF;
+	}
+
+	.bg-gray2 {
+		background-color: rgba(0,0,0,.3) !important;
+		border: 1px solid rgba(0,0,0,.1) !important;
+		color: #FFF;
+	}
+}
 
 .log-block {
 	margin-top: 30px;
@@ -109,7 +122,7 @@ input:focus {
 }
 .btn-clear {
 	border-radius: 2px;
-	background: #333;
+	background: #666;
 	color: #FFF;
 	margin-bottom: 20px;
 }
@@ -120,4 +133,13 @@ input:focus {
 
 #clearButton {
 	display: none;
+}
+
+#errorMsg {
+	font-family: monospace;
+	color: #333;
+	text-align: center;
+	display: block;
+	margin-top: 20px;
+	height: 40px;
 }

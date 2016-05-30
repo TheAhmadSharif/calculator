@@ -17,24 +17,22 @@
 				<span id="displayResult">Result</span>
 					<div class="number-block">
 					<ul class="number-list">
-						<li onClick="goInitialState()">CLR</li>
-						<li onClick="goInitialState()">DEL</li>
+						<li onClick="goInitialState()" class="bg-gray1">CLR</li>
+						<li onClick="removeElement()" class="bg-gray1">DEL</li>
 						<li onClick="addToDisplay('%')">%</li>
 						<li onClick="addToDisplay('/')">/</li>
-					
 						<li onClick="addToDisplay('9')">9</li>
 						<li onClick="addToDisplay('8')">8</li>
 						<li onClick="addToDisplay('7')">7</li>
-						<li onClick="addToDisplay('*')">*</li>
-						
+						<li onClick="addToDisplay('*')">x</li>
 						<li onClick="addToDisplay('6')">6</li>
 						<li onClick="addToDisplay('5')">5</li>
 						<li onClick="addToDisplay('4')">4</li>
-							<li onClick="addToDisplay('-')">-</li>
+						<li onClick="addToDisplay('-')" class="bg-gray1">-</li>
 						<li onClick="addToDisplay('3')">3</li>
 						<li onClick="addToDisplay('2')">2</li>
 						<li onClick="addToDisplay('1')">1</li>
-						<li onClick="addToDisplay('+')">+</li>
+						<li onClick="addToDisplay('+')" class="bg-gray1">+</li>
 						<li onClick="addToDisplay('.')">.</li>
 						<li onClick="addToDisplay('0')">0</li>
 						<li onClick="addToDisplay('00')">00</li>
@@ -43,6 +41,8 @@
 				</div> <!-- End  number Block -->
 			</div> <!-- End Calculator Block -->
 		</div>	<!-- End Calculator-->
+			<span id="errorMsg"></span>
+
 
 		<div class="log-block">
 			<button class="btn btn-clear pull-right" id="clearButton" onclick="clearLog()">Clear Log</button>
@@ -65,7 +65,12 @@
 
 
 	   /* Focused */
-		document.getElementById("getInputValue").focus();
+		var inputElement = document.getElementById("getInputValue");
+		inputElement.focus();
+		inputElement.addEventListener("blur", function(event){
+			inputElement.focus();
+		}); 
+
 		function getUserInput () {
 			var inputValue = document.getElementById("getInputValue").value;
 			return inputValue;
@@ -76,28 +81,48 @@
 			  document.getElementById('getInputValue').value = getUserInfo; 
 			  return getUserInfo;
 		}
-		function getResult () {
-			var result = eval(getUserInput());
 
-			if (result) {
-				document.getElementById("displayResult").innerHTML = result;
-				getLog();
-				return result;
-			}
-			
+		function getResult () {
+					try {
+							var result = eval(getUserInput());
+					    document.getElementById("displayResult").innerHTML = result;
+							getLog();
+							console.log(result);
+
+							return result;
+					}
+					catch(error) {
+						if (error) {
+								errorHandling();
+					        
+					    }
+
+					}	
+
 		}
+
+		function errorHandling () {
+	        document.getElementById("errorMsg").innerHTML = 'This is not a valid format to calculate. Correct then try again.';
+					setTimeout(function () {
+						document.getElementById("errorMsg").innerHTML = null;
+					}, 3000);
+		}
+
+		/* Initial State */
 		function goInitialState () {
-			document.getElementById("getInputValue").value = '';
+			document.getElementById("getInputValue").value = null;
+			document.getElementById("errorMsg").innerHTML = null;
+		}
+
+		function removeElement() {
+			var getExpression = inputElement.value;		
+			var expressionLength = inputElement.value.length;	
+			if (expressionLength) {
+				var el = getExpression.slice(0,-1);
+				document.getElementById("getInputValue").value = el;
+			}
 		}
    
-    /* Enter Key */
-		document.getElementById("getInputValue").addEventListener("keyup", function(event) {
-    event.preventDefault();
-    		if (event.keyCode == 13) {
-		    		getResult();
-		    }
-		    
-		});
 		/* Log */
 		function getLog () {
 			var logTable = document.getElementById('logTable');
@@ -109,20 +134,32 @@
 			td1.innerHTML = getCalculatedValue;
 			td2.innerHTML = '=';
 			td3.innerHTML = eval(getCalculatedValue);
-
 			document.getElementById("clearButton").style.display = "block";
-
-
 		}
 
-
 		/* Esc Key Press */
-		document.addEventListener("keydown", function(event) {
-			if (event.keyCode == 27) {
-				goInitialState();
+		document.addEventListener("keyup", function(event) {
+			switch (event.keyCode) {
+				case 27: 
+					console.log('Esc key pressed');
+					goInitialState();
+					break;
+				case 13: 
+				console.log('Enter Key Pressed');
+				getResult();
+				break;
+				case 46:
+				console.log('Delete key pressed');
+				removeElement(); 
+				break;
+				default: 
+				console.log('Default');
+				break;
 			}
 		  
 		});
+
+
 		
 	</script>
 </body>
