@@ -51,10 +51,14 @@ input:focus {
 #displayResult, #getInputValue, .number-list{
 	width: 190px;
 }
+#displayResult, #getInputValue {
+	font-family: monospace;
+}
+
 #displayResult {
  		margin-top: 10px;
     margin-bottom: 10px;
-    border: 1px solid #666;
+    border: 1px solid #888;
     padding: 5px;
     float: left;
     clear: both;
@@ -67,8 +71,7 @@ input:focus {
 }
 #getInputValue:focus {
 	background-color: #FFF;
-  border: 1px solid #666;
-  box-shadow: -1px 1px 1px 0px rgba(0, 0, 0, 0.4);
+  border: 1px solid #888;
 }
 .number-list > li {
 		display: inline-block;
@@ -83,17 +86,31 @@ input:focus {
 	  text-decoration: none;
 	  width: 44px;
 	  text-align: center;
+
+
+	  background-image: -moz-linear-gradient(top,#d6d6d6,#d0d0d0);
+    background-image: -ms-linear-gradient(top,#d6d6d6,#d0d0d0);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#d6d6d6,EndColorStr=#d0d0d0);
+    background-image: -o-linear-gradient(top,#d6d6d6,#d0d0d0);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#d6d6d6),to(#d0d0d0));
+    background-image: -webkit-linear-gradient(top,#d6d6d6,#d0d0d0);
+    background-color: #d6d6d6;
+    background-image: linear-gradient(top,#d6d6d6,#d0d0d0);
+    border: 1px solid #c6c6c6;
+    color: #444;
+
 	&:hover {
 		background-color: #333;
-		color: #FFF;
+		color: #000;
 	}
 	.number-list > li:last-child {
 		margin-right: 0;
 	}
 }
 
-.number-list .bg-black {
+.number-list >li.bg-black {
 	background-color: #666 !important;
+	background-image: none;
 	border-color: #666 !important;
 	color: #FFF !important;
 	&:hover {
@@ -116,6 +133,12 @@ input:focus {
 	}
 }
 
+
+
+.number-list > li.decimal-obj {
+	background-color: #FFF;
+	background-image: none;
+}
 .log-block {
 	margin-top: 30px;
 	margin-bottom: 30px;
@@ -142,4 +165,7 @@ input:focus {
 	display: block;
 	margin-top: 20px;
 	height: 40px;
+}
+table tr:first-child {
+	background: #E6E6E6;
 }
