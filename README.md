@@ -1,4 +1,4 @@
-# calculator
+# Calculator
 ---
 
 This is a simple calculator. I used javascript for this. There are lots of javascript calculator available in the realm of web world. What makes it difference. It has a log history which is not an unique feature but at least it has little different than other stereotype calculator. And highly optimised code. No plugin required to use this.
