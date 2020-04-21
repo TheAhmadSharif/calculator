@@ -8,13 +8,15 @@
 	<link rel="stylesheet" href="bootstrap.css">
 	<link rel="stylesheet" href="style.css">
 
+	<script type="text/javascript" style="live.js"></script>
+
 </head>
 <body>
 	<div class="container">
 		<div class="calculator">
 			<div class="calculator-block">
 				<input type="text" id="getInputValue" placeholder="0">
-				<span id="displayResult">Result</span>
+				<span id="displayResult" style="text-align: left;">Result</span>
 					<div class="number-block">
 					<ul class="number-list">
 						<li onClick="goInitialState()" class="">CLR</li>
@@ -141,31 +143,26 @@
 
 		var percent = "50%";
 		var result = parseFloat(percent) / 100.0;
-		console.log(result);
+		
 		/* Esc Key Press */
 		document.addEventListener("keyup", function(event) {
 			switch (event.keyCode) {
 				case 27: 
-					console.log('Esc key pressed');
 					goInitialState();
 					break;
 				case 13: 
-				console.log('Enter Key Pressed');
 				getResult();
 				break;
 				case 46:
-				console.log('Delete key pressed');
 				removeElement(); 
 				break;
 				default: 
-				console.log('Default');
 				break;
 			}
 		  
 		});
 
-		console.log('Dear Developer, This is Ahmad Sharif');
-		console.log('catch me here', 'https://TheAhmadSharif.github.io/portfolio');
+		console.log('Developed by https://github.com/TheAhmadSharif');
 		
 	</script>
 </body>

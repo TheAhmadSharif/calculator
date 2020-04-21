@@ -2,7 +2,7 @@
 
 ----
 
-This is a simple calculator. javascript language is used to do this. There are lots of javascript calculator available in the realm of web world. What makes it difference. It has a log history which is not an unique feature but at least it has little bit different than other stereotype calculator. Highly optimised plain javascript code. 
+This is a simple calculator developd with vanila Javascript. It has a log history which is not an unique feature but at least it has little bit different than other stereotype calculator. H
 
 1. Log History 
 2. No third party plugin required
@@ -17,12 +17,11 @@ The MIT License (MIT)
 
 Copyright (c) 2016, Ahmad Sharif
 
-This javascript calculator is licensed under the MIT license. (http://opensource.org/licenses/MIT)
+This Javascript calculator is licensed under the MIT license. (http://opensource.org/licenses/MIT)
 
 
 ### Issues
 ---
-Let me mail if you face any issues. I will fix the issues in next release.
+Let me know by shooting a mail If you get any issue.
 
-1. to.ahmadsharif@gmail.com
-2. skype: ahmadshorif
+1. TheAhmadSharif@gmail.com
