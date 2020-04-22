@@ -2,8 +2,7 @@
 
 ----
 
-This is a simple calculator developd with vanila Javascript. It has a log history which is not an unique feature but at least it has little bit different than other stereotype calculator. H
-
+This is a simple calculator developd with vanila Javascript. 
 1. Log History 
 2. No third party plugin required
 3. Highly optimize code	
@@ -22,6 +21,6 @@ This Javascript calculator is licensed under the MIT license. (http://opensource
 
 ### Issues
 ---
-Let me know by shooting a mail If you get any issue.
+Let me know by shooting a mail If you find any issue.
 
 1. TheAhmadSharif@gmail.com
