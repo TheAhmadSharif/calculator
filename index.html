@@ -5,7 +5,7 @@
 	<title>Calculator</title>
 	
 	<link rel="shortcut icon" href="calc.png">
-	<link rel="stylesheet" href="bootstrap.css">
+	<link rel="stylesheet" href="bootstrap4.css">
 	<link rel="stylesheet" href="style.css">
 
 
@@ -18,9 +18,9 @@
 				<span id="displayResult" style="text-align: left;">Result</span>
 					<div class="number-block">
 					<ul class="number-list">
-						<li onClick="goInitialState()" class="">CLR</li>
-						<li onClick="removeElement()" class="">DEL</li>
-						<li onClick="addToDisplay('%')">%</li>
+						<li onClick="goInitialState()" title="Clear Disaply">CLR</li>
+						<li onClick="removeElement()" title="Delete">DEL</li>
+						<li onClick="addToDisplay('%')" title="Remainder">%</li>
 						<li onClick="addToDisplay('/')">&divide;</li>
 						<li onClick="addToDisplay('9')" class="decimal-obj">9</li>
 						<li onClick="addToDisplay('8')" class="decimal-obj">8</li>
@@ -42,7 +42,16 @@
 				</div> <!-- End  number Block -->
 			</div> <!-- End Calculator Block -->
 		</div>	<!-- End Calculator-->
+
+		<div>
 			<span id="errorMsg"></span>
+		</div>
+			
+
+
+		<div>
+			<a href="https://github.com/TheAhmadSharif/calculator" target="_blank" class="btn">Source Code</a>
+		</div>
 
 
 		<div class="log-block">
@@ -78,7 +87,7 @@
 
 		}
 		function addToDisplay (number) {
-				var getUserInfo = getUserInput() + number;
+			  var getUserInfo = getUserInput() + number;
 			  document.getElementById('getInputValue').value = getUserInfo; 
 			  return getUserInfo;
 		}
